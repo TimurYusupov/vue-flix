@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+   background-color: rgb(77, 80, 69);
+}
+
+@layer utilities {
+   .text-shadow-custom {
+      text-shadow: 2px 2px 2px #000;
+   }
+}
