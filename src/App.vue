@@ -3,6 +3,7 @@ import Header from '@/components/Header.vue'
 import { ref, provide } from 'vue'
 import CategoriesSidebar from '@/components/Sidebars/CategoriesSidebar.vue'
 import ReleasesSidebar from '@/components/Sidebars/ReleasesSidebar.vue'
+import SoonSidebar from './components/Sidebars/SoonSidebar.vue'
 
 const inputValue = ref<string>('')
 provide('inputValue', inputValue)
@@ -16,7 +17,10 @@ const setSearchQuery = (value: string): void => {
    <div class="wrapper">
       <Header @search="setSearchQuery" />
 
-      <CategoriesSidebar bgColor="bg-custom-gray" />
+      <div class="flex flex-col gap-2">
+         <CategoriesSidebar bgColor="bg-custom-gray" />
+         <SoonSidebar />
+      </div>
 
       <main>
          <RouterView />
