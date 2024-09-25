@@ -1,34 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 defineProps<{
    bgColor?: string
 }>()
-
-const categories = ref<string[]>([
-   'Anime',
-   'Biographical',
-   'Action',
-   'Western',
-   'War',
-   'Detective',
-   'Documentary',
-   'Drama',
-   'Historical',
-   'Comedy',
-   'Crime',
-   'Melodrama',
-   'Mystical',
-   'Cartoons',
-   'Musical',
-   'Adventure',
-   'Family',
-   'Sports',
-   'Thrillers',
-   'Horrors',
-   'Science Fiction',
-   'Fantasy'
-])
 </script>
 
 <template>
