@@ -35,7 +35,7 @@ const setSearchQuery = (value: string): void => {
    column-gap: 15px;
    background-color: white;
    max-width: 1100px;
-   margin: 50px auto 0;
+   margin: 50px auto;
    padding: 15px;
    border-radius: 16px;
    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
