@@ -6,6 +6,10 @@ defineProps<{
    bgColor?: string
 }>()
 
+const currentImage = ref<string | null>(null)
+const mouseX = ref<number>(0)
+const mouseY = ref<number>(0)
+
 const movies = ref<IMovie[]>([
    {
       id: 1,
@@ -317,6 +321,21 @@ const newReleases = computed(() => {
       .sort((a, b) => b.addedAt.getTime() - a.addedAt.getTime())
       .slice(0, 10)
 })
+
+const showImage = (event: MouseEvent, imageUrl: string) => {
+   currentImage.value = imageUrl
+   mouseX.value = event.clientX
+   mouseY.value = event.clientY
+}
+
+const hideImage = () => {
+   currentImage.value = null
+}
+
+const updateMousePosition = (event: MouseEvent) => {
+   mouseX.value = event.clientX
+   mouseY.value = event.clientY
+}
 </script>
 
 <template>
@@ -333,10 +352,22 @@ const newReleases = computed(() => {
                ]"
                v-for="(movie, i) in newReleases"
                :key="i"
+               @mouseover="showImage($event, movie.imageUrl)"
+               @mouseleave="hideImage"
+               @mousemove="updateMousePosition"
             >
                {{ movie.title }}
             </li>
          </ul>
       </nav>
+
+      <!-- Изображение, которое следует за курсором -->
+      <img
+         v-if="currentImage"
+         :src="currentImage"
+         alt="Movie Image"
+         class="fixed z-50 w-40 h-52 object-cover pointer-events-none"
+         :style="{ top: `${mouseY + 30}px`, left: `${mouseX - 70}px` }"
+      />
    </aside>
 </template>
