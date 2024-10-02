@@ -5,3 +5,10 @@ export interface IMovie {
    imageUrl: string
    addedAt: Date
 }
+
+export interface ISoonMovie {
+   id: number
+   title: string
+   imageUrl: string
+   year: number
+}
