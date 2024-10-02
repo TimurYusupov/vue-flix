@@ -30,7 +30,7 @@ const movies = ref<string[]>([
 </script>
 
 <template>
-   <aside class="py-3 rounded-xl" :class="bgColor">
+   <aside class="h-fit py-3 rounded-xl" :class="bgColor">
       <h3 class="text-center text-md text-sidebar-title text-shadow-custom font-bold mb-1">
          New Movies
       </h3>
