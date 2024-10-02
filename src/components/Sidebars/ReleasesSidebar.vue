@@ -361,7 +361,6 @@ const updateMousePosition = (event: MouseEvent) => {
          </ul>
       </nav>
 
-      <!-- Изображение, которое следует за курсором -->
       <img
          v-if="currentImage"
          :src="currentImage"
