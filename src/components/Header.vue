@@ -37,7 +37,7 @@ defineEmits(['search'])
             <li
                class="text-lg text-gray-500 font-semibold hover:text-black hover:underline transition-colors"
             >
-               <RouterLink to="/favorites " active-class="text-black underline">
+               <RouterLink to="/favorites" active-class="text-black underline">
                   Favorites
                </RouterLink>
             </li>
@@ -45,8 +45,8 @@ defineEmits(['search'])
                class="text-lg text-gray-500 font-semibold hover:text-black hover:underline transition-colors"
             >
                <RouterLink to="/login" active-class="text-black underline"
-                  >Login / Register</RouterLink
-               >
+                  >Login / Register
+               </RouterLink>
             </li>
          </ul>
       </div>
