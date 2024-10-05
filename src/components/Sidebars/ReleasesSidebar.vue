@@ -319,7 +319,7 @@ const newReleases = computed(() => {
    return movies.value
       .slice()
       .sort((a, b) => b.addedAt.getTime() - a.addedAt.getTime())
-      .slice(0, 10)
+      .slice(0, 15)
 })
 
 const showImage = (event: MouseEvent, imageUrl: string) => {
