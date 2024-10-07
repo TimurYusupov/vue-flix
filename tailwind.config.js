@@ -11,7 +11,7 @@ export default {
         'custom-light-gray': '#666',
         'custom-dark-gray': '#2c2c2c',
         'cold-steel': '#4F4F4F',
-        'sidebar-title': '#ffd200',
+        'custom-yellow': '#ffd200',
         'sidebar-border': '#454545'
       },
     },

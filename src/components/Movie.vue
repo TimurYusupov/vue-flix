@@ -12,7 +12,11 @@ defineProps<{
       <div class="movie-top py-1 px-2 flex items-center justify-between bg-custom-dark-gray">
          <div class="flex items-center gap-2">
             <img src="/play-online.png" width="20" height="20" alt="Play Icon" />
-            <span class="text-white font-bold text-lg">{{ movie.title }} ({{ movie.year }})</span>
+            <span
+               class="text-white font-semibold text-lg hover:text-custom-yellow hover:underline cursor-pointer"
+            >
+               {{ movie.title }} ({{ movie.year }})
+            </span>
          </div>
          <StarsRating :rating="movie.rating" />
       </div>
