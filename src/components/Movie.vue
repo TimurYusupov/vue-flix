@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-   <div class="movie-card border border-custom-dark-gray rounded-md overflow-hidden shadow-xl">
+   <div class="movie-card rounded-md overflow-hidden shadow-xl">
       <div class="movie-top py-1 px-2 flex items-center justify-between bg-custom-dark-gray">
          <div class="flex items-center gap-2">
             <img src="/play-online.png" width="20" height="20" alt="Play Icon" />
@@ -48,3 +48,9 @@ defineProps<{
       </div>
    </div>
 </template>
+
+<style scoped>
+.movie-card {
+   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+}
+</style>

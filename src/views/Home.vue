@@ -47,9 +47,9 @@ const movies = reactive<IMovie[]>([
 </script>
 
 <template>
-   <h1 class="text-center text-2xl font-bold">Watch movies anytime, anywhere</h1>
+   <h1 class="text-center text-3xl font-bold mb-6">Watch movies online</h1>
 
-   <div class="grid gap-4">
+   <div class="grid gap-5">
       <Movie v-for="movie in movies" :key="movie.id" :movie="movie" />
    </div>
 </template>
