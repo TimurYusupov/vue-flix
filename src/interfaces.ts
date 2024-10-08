@@ -4,7 +4,7 @@ export interface IMovie {
    year: number
    description: string
    length: number
-   resolution: string
+   resolutions: string[]
    category: string
    country: string
    imageUrl: string
