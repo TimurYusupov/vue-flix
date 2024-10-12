@@ -17,35 +17,33 @@ const setSearchQuery = (value: string): void => {
    <div class="wrapper">
       <Header @search="setSearchQuery" />
 
-      <div class="flex flex-col gap-2">
-         <CategoriesSidebar bgColor="bg-custom-gray" />
-         <SoonSidebar />
+      <div class="content-wrapper">
+         <div class="flex flex-col gap-2">
+            <CategoriesSidebar bgColor="bg-custom-gray" />
+            <SoonSidebar />
+         </div>
+
+         <main class="flex-1">
+            <RouterView />
+         </main>
+
+         <ReleasesSidebar bgColor="bg-custom-light-gray" />
       </div>
-
-      <main>
-         <RouterView />
-      </main>
-
-      <ReleasesSidebar bgColor="bg-custom-light-gray" />
    </div>
 </template>
 
 <style scoped>
 .wrapper {
-   display: grid;
-   grid-template-rows: auto 1fr;
-   grid-template-columns: 180px 1fr 180px;
-   row-gap: 15px;
-   column-gap: 15px;
-   background-color: white;
    max-width: 1100px;
    margin: 50px auto;
    padding: 15px;
+   background-color: white;
    border-radius: 16px;
    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
-header {
-   grid-column: span 3;
+.content-wrapper {
+   display: flex;
+   gap: 15px;
+   margin-top: 15px;
 }
 </style>

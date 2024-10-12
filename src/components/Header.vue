@@ -21,7 +21,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-   <header class="header w-full flex justify-between items-center bg-gray-100 border-2 shadow-lg">
+   <header class="header flex justify-between items-center bg-gray-100 border-2 shadow-lg">
       <RouterLink to="/">
          <img src="https://placehold.it/50" alt="Main logo" class="rounded-2xl" />
       </RouterLink>
@@ -78,12 +78,12 @@ onUnmounted(() => {
 <style scoped>
 .header {
    border-radius: 100px;
-   padding: 15px;
+   padding: 7px 10px 7px 10px;
 }
 
 @media (min-width: 950px) {
    .header {
-      padding: 0 10px 0 10px;
+      padding: 10px 10px 10px 10px;
    }
 }
 </style>
