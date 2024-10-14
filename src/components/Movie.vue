@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import type { IMovie } from '@/interfaces'
 import StarsRating from '@/components/StarsRating.vue'
+import { computed } from 'vue'
 
-defineProps<{
+const props = defineProps<{
    movie: IMovie
 }>()
+
+const clampText = computed(() => {
+   return props.movie.description.length > 130
+      ? props.movie.description.slice(0, 130) + '...'
+      : props.movie.description
+})
 </script>
 
 <template>
@@ -15,10 +22,10 @@ defineProps<{
             <span
                class="movie-title text-white font-semibold text-lg hover:text-custom-yellow hover:underline cursor-pointer"
             >
-               {{ movie.title }} ({{ movie.year }})
+               {{ props.movie.title }} ({{ props.movie.year }})
             </span>
          </div>
-         <StarsRating :rating="movie.rating" />
+         <StarsRating :rating="props.movie.rating" />
       </div>
 
       <div class="movie-bottom flex">
@@ -26,22 +33,22 @@ defineProps<{
          <div class="flex flex-col gap-1 px-3 py-4">
             <div class="flex gap-2">
                <span class="font-bold">Year:</span>
-               <span>{{ movie.year }}</span>
+               <span>{{ props.movie.year }}</span>
             </div>
             <div class="flex gap-2">
                <span class="font-bold">Country:</span>
-               <span>{{ movie.country }}</span>
+               <span>{{ props.movie.country }}</span>
             </div>
             <div class="flex gap-2">
                <span class="font-bold">Category:</span>
-               <span>{{ movie.category }}</span>
+               <span>{{ props.movie.category }}</span>
             </div>
             <div class="flex gap-2">
                <span class="font-bold">Length:</span>
-               <span>{{ movie.length }} min</span>
+               <span>{{ props.movie.length }} min</span>
             </div>
-            <div class="mt-auto mb-1">
-               {{ movie.description }}
+            <div class="movie-description mt-auto mb-1">
+               <i>{{ clampText }}</i>
             </div>
          </div>
       </div>
@@ -73,6 +80,13 @@ defineProps<{
 <style scoped>
 .movie-card {
    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+}
+
+.movie-title {
+   max-width: 250px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 @media (min-width: 950px) {

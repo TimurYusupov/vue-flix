@@ -52,7 +52,31 @@ const movies = reactive<IMovie[]>([
 <template>
    <h1 class="text-center text-3xl font-bold mb-6">Watch movies online</h1>
 
-   <div class="grid gap-5">
+   <div class="movie-wrapper">
       <Movie v-for="movie in movies" :key="movie.id" :movie="movie" />
    </div>
 </template>
+
+<style scoped>
+.movie-wrapper {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   padding-left: 30px;
+   padding-right: 30px;
+}
+
+@media (min-width: 700px) {
+   .movie-wrapper {
+      padding-left: 50px;
+      padding-right: 50px;
+   }
+}
+
+@media (min-width: 950px) {
+   .movie-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+   }
+}
+</style>
