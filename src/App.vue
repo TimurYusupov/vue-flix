@@ -11,6 +11,8 @@ provide('inputValue', inputValue)
 const setSearchQuery = (value: string): void => {
    inputValue.value = value
 }
+
+const showSidebar = ref<boolean>(false)
 </script>
 
 <template>
@@ -18,7 +20,7 @@ const setSearchQuery = (value: string): void => {
       <Header @search="setSearchQuery" />
 
       <div class="content-wrapper">
-         <div class="flex flex-col gap-2">
+         <div v-if="showSidebar" class="flex flex-col gap-2">
             <CategoriesSidebar bgColor="bg-custom-gray" />
             <SoonSidebar />
          </div>
@@ -27,7 +29,7 @@ const setSearchQuery = (value: string): void => {
             <RouterView />
          </main>
 
-         <ReleasesSidebar bgColor="bg-custom-light-gray" />
+         <ReleasesSidebar v-if="showSidebar" bgColor="bg-custom-light-gray" />
       </div>
    </div>
 </template>

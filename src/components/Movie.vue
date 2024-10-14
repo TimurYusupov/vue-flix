@@ -13,7 +13,7 @@ defineProps<{
          <div class="flex items-center gap-2">
             <img src="/play-online.png" width="20" height="20" alt="Play Icon" />
             <span
-               class="text-white font-semibold text-lg hover:text-custom-yellow hover:underline cursor-pointer"
+               class="movie-title text-white font-semibold text-lg hover:text-custom-yellow hover:underline cursor-pointer"
             >
                {{ movie.title }} ({{ movie.year }})
             </span>
@@ -73,5 +73,8 @@ defineProps<{
 <style scoped>
 .movie-card {
    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 950px) {
 }
 </style>
