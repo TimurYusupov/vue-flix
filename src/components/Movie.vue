@@ -29,7 +29,14 @@ const clampText = computed(() => {
       </div>
 
       <div class="movie-bottom flex">
-         <img src="https://via.placeholder.com/190x260" alt="Movie Image" />
+         <div class="movie-image-container relative">
+            <img class="movie-image" src="https://via.placeholder.com/190x260" alt="Movie Image" />
+            <img
+               class="favorite-icon w-12 absolute left-2 bottom-2 cursor-pointer"
+               src="/star-full.png"
+               alt="Favorite Icon"
+            />
+         </div>
          <div class="flex flex-col gap-1 px-3 py-4">
             <div class="flex gap-2">
                <span class="font-bold">Year:</span>
@@ -87,11 +94,24 @@ const clampText = computed(() => {
    overflow: hidden;
    text-overflow: ellipsis;
 }
+.movie-image-container {
+   min-width: 190px;
+   height: 260px;
+   cursor: pointer;
+}
+.movie-image-container:hover .favorite-icon {
+   opacity: 1;
+}
+.favorite-icon {
+   opacity: 0.5;
+}
+.movie-image {
+   width: 100%;
+}
 .resolution-icons img {
    height: 30px;
    width: 30px;
 }
-
 @media (min-width: 600px) {
    .resolution-icons img {
       height: 40px;
