@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IMovie } from '@/interfaces'
 import StarsRating from '@/components/StarsRating.vue'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps<{
    movie: IMovie
@@ -12,6 +12,28 @@ const clampText = computed(() => {
       ? props.movie.description.slice(0, 130) + '...'
       : props.movie.description
 })
+
+const tooltipTextForFavorite = computed(() => {
+   return auth.value ? 'Добавить в закладки' : 'Требуется авторизация для добавления в закладки'
+})
+
+const auth = ref<boolean>(false)
+
+const mouseX = ref<number>(0)
+const mouseY = ref<number>(0)
+const showTooltip = ref<boolean>(false)
+const tooltipText = ref<string>('')
+
+const updateMousePosition = (event: MouseEvent, text: string) => {
+   mouseX.value = event.clientX
+   mouseY.value = event.clientY
+   showTooltip.value = true
+   tooltipText.value = text
+}
+
+const hideTooltip = () => {
+   showTooltip.value = false
+}
 </script>
 
 <template>
@@ -30,11 +52,19 @@ const clampText = computed(() => {
 
       <div class="movie-bottom flex">
          <div class="movie-image-container relative">
-            <img class="movie-image" src="https://via.placeholder.com/190x260" alt="Movie Image" />
+            <img
+               class="movie-image"
+               src="https://via.placeholder.com/190x260"
+               alt="Movie Image"
+               @mousemove="updateMousePosition($event, props.movie.title)"
+               @mouseleave="hideTooltip"
+            />
             <img
                class="favorite-icon w-12 absolute left-2 bottom-2 cursor-pointer"
                src="/star-full.png"
                alt="Favorite Icon"
+               @mousemove="updateMousePosition($event, tooltipTextForFavorite)"
+               @mouseleave="hideTooltip"
             />
          </div>
          <div class="flex flex-col gap-1 px-3 py-4">
@@ -81,6 +111,14 @@ const clampText = computed(() => {
             width="50"
          />
       </div>
+
+      <div
+         v-if="showTooltip"
+         class="tooltip"
+         :style="{ top: `${mouseY + 5}px`, left: `${mouseX + 50}px` }"
+      >
+         {{ tooltipText }}
+      </div>
    </div>
 </template>
 
@@ -111,6 +149,18 @@ const clampText = computed(() => {
 .resolution-icons img {
    height: 30px;
    width: 30px;
+}
+.tooltip {
+   position: fixed;
+   background-color: rgba(0, 0, 0, 0.75);
+   color: #fff;
+   padding: 5px 10px;
+   border-radius: 5px;
+   font-size: 12px;
+   white-space: nowrap;
+   pointer-events: none;
+   z-index: 1000;
+   transform: translate(-50%, 20px);
 }
 @media (min-width: 600px) {
    .resolution-icons img {
