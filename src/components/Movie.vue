@@ -53,7 +53,7 @@ const clampText = computed(() => {
          </div>
       </div>
 
-      <div class="h-12 absolute right-2 top-10 flex">
+      <div class="resolution-icons absolute right-2 top-10 flex">
          <img
             v-if="movie.resolutions.includes('SD')"
             src="/resolutions/sd.png"
@@ -81,14 +81,23 @@ const clampText = computed(() => {
 .movie-card {
    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
 }
-
 .movie-title {
    max-width: 250px;
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
 }
+.resolution-icons img {
+   height: 30px;
+   width: 30px;
+}
 
+@media (min-width: 600px) {
+   .resolution-icons img {
+      height: 40px;
+      width: 40px;
+   }
+}
 @media (min-width: 950px) {
 }
 </style>
