@@ -14,7 +14,7 @@ const clampText = computed(() => {
 })
 
 const tooltipTextForFavorite = computed(() => {
-   return auth.value ? 'Добавить в закладки' : 'Требуется авторизация для добавления в закладки'
+   return auth.value ? 'Add to Favorites' : 'Login required to add to Favorites'
 })
 
 const auth = ref<boolean>(false)
