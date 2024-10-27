@@ -11,8 +11,6 @@ provide('inputValue', inputValue)
 const setSearchQuery = (value: string): void => {
    inputValue.value = value
 }
-
-const showSidebar = ref<boolean>(false)
 </script>
 
 <template>
@@ -20,7 +18,7 @@ const showSidebar = ref<boolean>(false)
       <Header @search="setSearchQuery" />
 
       <div class="content-wrapper">
-         <div v-if="showSidebar" class="flex flex-col gap-2">
+         <div class="flex flex-col gap-2">
             <CategoriesSidebar bgColor="bg-custom-gray" />
             <SoonSidebar />
          </div>
@@ -29,7 +27,7 @@ const showSidebar = ref<boolean>(false)
             <RouterView />
          </main>
 
-         <ReleasesSidebar v-if="showSidebar" bgColor="bg-custom-light-gray" />
+         <ReleasesSidebar bgColor="bg-custom-light-gray" />
       </div>
    </div>
 </template>
@@ -38,14 +36,18 @@ const showSidebar = ref<boolean>(false)
 .wrapper {
    max-width: 1100px;
    margin: 50px auto;
-   padding: 15px;
+   padding: 10px;
    background-color: white;
    border-radius: 16px;
    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .content-wrapper {
    display: flex;
-   gap: 15px;
    margin-top: 15px;
+}
+@media (min-width: 950px) {
+   .content-wrapper {
+      gap: 15px;
+   }
 }
 </style>

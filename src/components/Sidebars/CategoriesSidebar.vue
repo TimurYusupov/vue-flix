@@ -32,7 +32,7 @@ const categories = ref<string[]>([
 </script>
 
 <template>
-   <aside class="h-fit w-44 px-2 py-3 rounded-xl" :class="bgColor">
+   <aside class="hidden h-fit w-44 px-2 py-3 rounded-xl" :class="bgColor">
       <h3 class="text-center text-md text-custom-yellow text-shadow-custom font-bold mb-1">
          CATEGORIES
       </h3>

@@ -339,7 +339,7 @@ const updateMousePosition = (event: MouseEvent) => {
 </script>
 
 <template>
-   <aside class="h-fit w-44 py-3 rounded-xl" :class="bgColor">
+   <aside class="hidden h-fit w-44 py-3 rounded-xl" :class="bgColor">
       <h3 class="text-center text-md text-custom-yellow text-shadow-custom font-bold mb-1">
          New Movies
       </h3>

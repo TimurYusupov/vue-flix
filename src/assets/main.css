@@ -11,3 +11,9 @@ body {
       text-shadow: 2px 2px 2px #000;
    }
 }
+
+@media (min-width: 950px) {
+   aside {
+      display: block !important;
+   }
+}

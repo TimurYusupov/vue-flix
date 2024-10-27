@@ -70,7 +70,7 @@ const randomMovies = computed(() => {
 </script>
 
 <template>
-   <aside class="h-fit w-44 rounded-xl" :class="bgColor">
+   <aside class="hidden h-fit w-44 rounded-xl" :class="bgColor">
       <div class="bg-custom-light-gray p-2 rounded-tl-lg rounded-tr-lg">
          <h3 class="text-center text-md text-custom-yellow text-shadow-custom font-bold">
             Coming Soon

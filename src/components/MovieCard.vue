@@ -50,15 +50,18 @@ const hideTooltip = () => {
          <StarsRating :rating="props.movie.rating" />
       </div>
 
-      <div class="movie-bottom flex">
-         <div class="movie-image-container relative">
-            <img
+      <div class="movie-bottom">
+         <div
+            class="movie-image-container relative"
+            :style="{ backgroundImage: `url(${props.movie.imageUrl})` }"
+         >
+            <!-- <img
                class="movie-image"
-               src="https://via.placeholder.com/190x260"
+               src="/deadpool-3.jpg"
                alt="Movie Image"
                @mousemove="updateMousePosition($event, props.movie.title)"
                @mouseleave="hideTooltip"
-            />
+            /> -->
             <img
                class="favorite-icon w-12 absolute left-2 bottom-2 cursor-pointer"
                src="/star-full.png"
@@ -67,7 +70,8 @@ const hideTooltip = () => {
                @mouseleave="hideTooltip"
             />
          </div>
-         <div class="flex flex-col gap-1 px-3 py-4">
+
+         <div class="movie-details flex flex-col gap-1 px-3 py-4">
             <div class="flex gap-2">
                <span class="font-bold">Year:</span>
                <span>{{ props.movie.year }}</span>
@@ -90,7 +94,7 @@ const hideTooltip = () => {
          </div>
       </div>
 
-      <div class="resolution-icons absolute right-2 top-10 flex">
+      <div class="resolution-icons absolute right-2 top-10">
          <img
             v-if="movie.resolutions.includes('SD')"
             src="/resolutions/sd.png"
@@ -125,6 +129,8 @@ const hideTooltip = () => {
 <style scoped>
 .movie-card {
    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
+   overflow: hidden;
+   width: 100%;
 }
 .movie-title {
    max-width: 250px;
@@ -132,10 +138,19 @@ const hideTooltip = () => {
    overflow: hidden;
    text-overflow: ellipsis;
 }
-.movie-image-container {
+/* .movie-image-container {
+   overflow: hidden;
    min-width: 190px;
-   height: 260px;
+   height: auto;
    cursor: pointer;
+} */
+.movie-image-container {
+   width: 100%;
+   height: 300px;
+   /* background-image: url('/deadpool-3.jpg'); */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 .movie-image-container:hover .favorite-icon {
    opacity: 1;
@@ -145,10 +160,18 @@ const hideTooltip = () => {
 }
 .movie-image {
    width: 100%;
+   height: 100%;
+   object-fit: contain;
+}
+.resolution-icons {
+   display: none;
 }
 .resolution-icons img {
    height: 30px;
    width: 30px;
+}
+.movie-details {
+   display: none;
 }
 .tooltip {
    position: fixed;
@@ -163,6 +186,15 @@ const hideTooltip = () => {
    transform: translate(-50%, 20px);
 }
 @media (min-width: 600px) {
+   .movie-bottom {
+      display: flex;
+   }
+   .movie-details {
+      display: flex;
+   }
+   .resolution-icons {
+      display: flex;
+   }
    .resolution-icons img {
       height: 40px;
       width: 40px;

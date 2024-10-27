@@ -18,7 +18,7 @@ const getStarType = (index: number, rating: number) => {
 </script>
 
 <template>
-   <div class="flex w-22">
+   <div class="stars w-22">
       <div v-for="i in 10" :key="i">
          <span v-if="getStarType(i - 1, props.rating) === 'full'">
             <img width="20" src="/star-full.png" alt="Star Full" class="star" />
@@ -32,3 +32,15 @@ const getStarType = (index: number, rating: number) => {
       </div>
    </div>
 </template>
+
+<style scoped>
+.stars {
+   display: none;
+}
+
+@media (min-width: 600px) {
+   .stars {
+      display: flex;
+   }
+}
+</style>
